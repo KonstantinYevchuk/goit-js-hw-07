@@ -4,7 +4,7 @@ import { galleryItems } from './gallery-items.js';
 
 const galleryContainer = document.querySelector(".gallery")
 console.log(galleryContainer)
-
+let instance;
 // const markup = galleryArray(galleryItems)        
 // galleryContainer.insertAdjacentHTML('beforeend', markup)
 
@@ -52,22 +52,22 @@ function onClick(evt) {
     if(!evt.target.classList.contains("gallery__image")) {
       return
     } else {
-    const instance = basicLightbox.create(`
-    <img src="${evt.target.dataset.source}" width="800" height="600">
+    instance = basicLightbox.create(`
+    <img src="${evt.target.dataset.source}" alt="${this.description}" width="800" height="600">
 `)
   instance.show()
-}
+  document.addEventListener("keydown", keyDown)
 }
 
-const body = document.querySelector("body")
-galleryContainer.addEventListener("keydown", evt => {
-  console.log(evt)
-  if(evt.code === "Escape") {
-    console.log("Hello")
-    const instance = basicLightbox.create(``)
-    instance.close()
-  }
-})
+}
+function keyDown(evt) {
+  if(!evt.code === "Escape") {
+    return
+}
+instance.close()
+document.removeEventListener("keydown", keyDown)
+}
+
 
 
 
