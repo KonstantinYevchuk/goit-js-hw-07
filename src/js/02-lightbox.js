@@ -16,18 +16,22 @@ const array = galleryItems.reduce(
 
    
 galleryContainer.insertAdjacentHTML('beforeend', array)
-
-galleryContainer.addEventListener("click", onClick);
-function onClick(evt) {
+var lightbox = new SimpleLightbox('.gallery a', { 
+  captionsData: "alt",
+  captionPosotion: 'bottom',
+  captionDaley: 250
+});
+// galleryContainer.addEventListener("click", onClick);
+// function onClick(evt) {
     
-    evt.preventDefault()
-    if(!evt.target.classList.contains("gallery__image")) {
-      return
-    } else {
-        var lightbox = new SimpleLightbox('.gallery a', { 
-            captionsData: "alt",
-            captionPosotion: 'bottom',
-            captionDaley: 250
-         });
-}
-}
+//     evt.preventDefault()
+//     if(!evt.target.classList.contains("gallery__image")) {
+//       return
+//     } else {
+//         var lightbox = new SimpleLightbox('.gallery a', { 
+//             captionsData: "alt",
+//             captionPosotion: 'bottom',
+//             captionDaley: 250
+//          });
+// }
+// }
